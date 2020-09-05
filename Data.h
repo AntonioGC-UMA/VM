@@ -5,7 +5,10 @@
 #include <vector>
 using namespace std;
 
-
+enum class op_code
+{
+	Load, Store, Print, Begin, End
+};
 
 enum class token_type
 {

@@ -2,6 +2,8 @@
 #include "Tokenizer.h"
 #include "Parser.h"
 #include "Interpreter.h"
+#include "Bitecode_writer.h"
+#include "Vm.h"
 
 int main()
 {
@@ -27,6 +29,14 @@ int main()
 	Interpreter interpreter;
 
 	interpreter.interpret(root);
+
+	Bitecode_writer bw;
+
+	bw.visit(root);
+
+	Vm vm;
+	vm.instructions = bw.instructions;
+	vm.execute();
 
 	return 0;
 }
